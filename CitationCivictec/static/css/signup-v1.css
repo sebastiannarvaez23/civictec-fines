@@ -1,0 +1,20 @@
+label {
+    display: none !important;
+}
+
+.contain-form-create-officer {
+    width: 70%;
+    margin: 0px auto;
+    font-size: 14px;
+}
+
+.contain-btn-create-officer{
+    text-align: center;
+}
+
+.btn-create-officer{
+    width: 50%;
+    background-color: var(--primary-color);
+    color: aliceblue;
+    margin-bottom: 20px;
+}

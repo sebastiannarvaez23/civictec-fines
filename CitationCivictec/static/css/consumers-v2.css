@@ -1,0 +1,67 @@
+:root {
+    --primary-color: #011722;
+    --secundary-color: #f9fdff;
+    --contrast-color: aliceblue;
+    --very-like-pink: rgb(214, 236, 255);
+}
+
+body {
+    background-color: var(--secundary-color) !important;
+    font-family: 'Roboto', sans-serif !important;
+    margin: 0;
+
+}
+
+.principal-contain {
+    margin-top: 5px;
+}
+
+.principal-contain .title-page {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    text-align: center;
+}
+
+.header-page {
+    background-color: var(--primary-color);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-box-shadow: -11px 21px 73px -24px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -11px 21px 73px -24px rgba(0, 0, 0, 0.75);
+    box-shadow: -11px 21px 73px -24px rgba(0, 0, 0, 0.75);
+}
+
+.header-page img {
+    width: 10%;
+    margin: 20px;
+}
+
+.inp {
+    width: 95%;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 1px var(--very-like-pink);
+    background-color: var(--contrast-color);
+}
+
+.inp:focus {
+    outline: 2px solid var(--very-like-pink);
+}
+
+.btn {
+    border: none;
+    transition: .3s all;
+    -webkit-box-shadow: 1px 5px 24px -12px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 1px 5px 24px -12px rgba(0, 0, 0, 0.45);
+    box-shadow: 1px 5px 24px -12px rgba(0, 0, 0, 0.45);
+    transition: .7s all;
+}
+
+.btn:hover {
+    -webkit-box-shadow: 1px 5px 24px -8px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 1px 5px 24px -8px rgba(0, 0, 0, 0.45);
+    box-shadow: 1px 5px 24px -8px rgba(0, 0, 0, 0.45);
+    border: solid 1px var(--very-like-pink);
+    cursor: pointer;
+    transition: .7s all;
+}

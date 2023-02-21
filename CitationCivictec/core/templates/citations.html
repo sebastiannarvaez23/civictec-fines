@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="header-page">
+  <img class="civitec-logo" src="{% static 'img/civictec-logo.png' %}" alt="">
+</div>
+
+<div class="nav-bar-opt">
+  <nav class="nav-template">
+    <ul class="ul">
+      <li class="li"><a href="{% url 'citation' %}"><b>CITATIONS</b></a></li>
+      {% if user.is_authenticated %}
+      <li class="li"><a href="{% url 'officer' %}">OFFICER</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <nav class="options-profile">
+    <ul class="ul">
+      {% if user.is_authenticated %}
+      <li class="li"><a>HELLO {{user.first_name}}</a></li>
+      <li class="li"><a href="/admin/">ADMIN</a></li>
+      {% else %}
+      <li class="li"><a href="/admin/">LOGIN</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+<div class="principal-contain">
+  <div class="title-page">CITATIONS CIVICTEC</div>
+  <div class="searching">
+    <div>
+      <img class="searching-img" src="{% static 'img/searching-img.png' %}" alt="">
+
+      <form method="GET" action="{% url 'citation' %}">
+        <input class="inp" type="text" name="name_passenger" value="{{ request.GET.name_passenger }}" placeholder="Searching name passenger in the citation" />
+        <input class="inp" type="submit" style="display: none;">
+      </form>
+
+      <button class="btn" onclick="window.location.href=`{% url 'citation' %}`">Clean Filter</button>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="ul responsive-table">
+      <li class="li table-header">
+        <div class="col col-1">No Citation</div>
+        <div class="col col-2">Model Car</div>
+        <div class="col col-3">Passenger</div>
+        <div class="col col-4">Officer</div>
+      </li>
+      {% if user.is_authenticated %}
+      {% if object_list %}
+      {% for citation in object_list %}
+      <li class="li table-row">
+        <div class="col col-1" data-label="Job Id">{{citation.no_citation}}</div>
+        <div class="col col-2" data-label="Customer Name">{{citation.model_car}}</div>
+        <div class="col col-3" data-label="Amount">{{citation.name_passenger}}</div>
+        <div class="col col-4" data-label="Payment Status">{{citation.issued_by.user.first_name}}</div>
+      </li>
+      {% endfor %}
+      {% else %}
+      <h3> No data to show </h3>
+      {% endif %}
+      {% else %}
+      <h3> You must authenticate to display information </h3>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="info"></div>
+</div>
+
+{% endblock %}

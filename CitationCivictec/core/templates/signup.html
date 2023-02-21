@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block bootstrap %}
+<!-- Estilos -->
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="header-page">
+  <img class="civitec-logo" src="{% static 'img/civictec-logo.png' %}" alt="">
+</div>
+
+<div class="nav-bar-opt">
+  <nav class="nav-template">
+    <ul class="ul">
+      <li class="li"><a href="{% url 'citation' %}">CITATIONS</a></li>
+      {% if user.is_authenticated %}
+      <li class="li"><a href="{% url 'officer' %}"><b>OFFICER</b></a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <nav class="options-profile">
+    <ul class="ul">
+      {% if user.is_authenticated %}
+      <li class="li"><a href="/admin/">ADMIN</a></li>
+      {% else %}
+      <li class="li"><a href="/admin/">LOGIN</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+<div class="principal-contain">
+  <div class="contain-form-create-officer">
+    <form action="" method="post">{% csrf_token %}
+      <h3>Create Officer</h3>
+      {{form.as_p}}
+      {% for group in form.fields.groups.queryset %}
+      <input type="checkbox" name="{{ form.groups.name }}" value="{{ group.pk }}" id="{{ group.pk }}">
+      <span for="{{ group.pk }}">{{ group.name }}</span>
+      {% endfor %}
+
+
+      <div class="contain-btn-create-officer">
+        <button class="btn btn-create-officer" type="submit">Create Officer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

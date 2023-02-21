@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- --------------------- Content Page -------------------------- -->
+<div class="header-page">
+  <img class="civitec-logo" src="{% static 'img/civictec-logo.png' %}" alt="">
+</div>
+
+<div class="nav-bar-opt">
+  <nav class="nav-template">
+    <ul class="ul">
+      <li class="li"><a href="{% url 'citation' %}">CITATIONS</a></li>
+      {% if user.is_authenticated %}
+      <li class="li"><a href="{% url 'officer' %}"><b>OFFICER</b></a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <nav class="options-profile">
+    <ul class="ul">
+      {% if user.is_authenticated %}
+      <li class="li"><a>HELLO {{user.first_name}}</a></li>
+      <li class="li"><a href="/admin/">ADMIN</a></li>
+      {% else %}
+      <li class="li"><a href="/admin/">LOGIN</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+</div>
+
+<div class="principal-contain">
+  <div class="title-page">OFFICERS CIVICTEC</div>
+  <div class="list-officer">
+    <div class="container">
+      <ul class="ul responsive-table">
+        <li class="li table-header">
+          <div class="col col-1">Officer Id</div>
+          <div class="col col-2">Officer Name</div>
+          <div class="col col-4">Agency</div>
+          <div class="col col-5"></div>
+          <div class="col col-6"></div>
+        </li>
+        {% for officer in officers %}
+        <li class="li table-row">
+          <div class="col col-1" data-label="Job Id">{{officer.id}}</div>
+          <div class="col col-2" data-label="Customer Name">{{officer.user.first_name}} {{officer.user.last_name}}</div>
+          {% if officer.agency.name|length > 18 %}
+          <div class="col col-4" data-label="Payment Status">{{officer.agency.name|slice:":18"}}...</div>
+          {% else %}
+          <div class="col col-4" data-label="Payment Status">{{officer.agency.name}}</div>
+          {% endif %}
+
+          {% if myProfileOfficer.user == officer.user or myProfileOfficer.agency == officer.agency and 'Clerk' == groupsUser.name or 'Admin' == groupsUser.name %}
+          <div class="col col-5" data-label="Payment Status"><a href="http://localhost:8000/admin/auth/user/{{officer.user.id}}/change/"><button class="btn btn-crud-officer">Edit</button></a></div>
+          {% else %}
+          <div class="col col-5" data-label="Payment Status"></div>
+          {% endif %}
+
+          {% if myProfileOfficer.agency == officer.agency and 'Clerk' == groupsUser.name or 'Admin' == groupsUser.name %}
+          <div class="col col-6" data-label="Payment Status">
+            <a href="{% url 'officer_delete' officer.id %}"><button class="btn btn-crud-officer btn-delete">Delete</button></a></div>
+          {% else %}
+          <div class="col col-6" data-label="Payment Status"></div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% if 'Clerk' == groupsUser.name or 'Admin' == groupsUser.name %}
+    <div class="contain-btn-add-officer"><a href="{% url 'signup' %}"><button class="btn btn-add-officer">Add Officer</button></a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="info"></div>
+</div>
+{% endblock %}

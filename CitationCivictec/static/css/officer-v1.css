@@ -1,0 +1,27 @@
+.btn-crud-officer {
+    width: 90%;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.btn-delete {
+    background-color: rgb(247, 62, 62);
+    color: aliceblue;
+    transition: .7s all;
+}
+
+.contain-btn-add-officer {
+    text-align: center;
+}
+
+.btn-add-officer {
+    margin: 16px 0% 16px 0px;
+    width: 50%;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    color: var(--very-like-pink);
+    font-size: 16px;
+    transition: .7s all;
+}
+

@@ -1,0 +1,45 @@
+:root {
+    --primary-color: #011722;
+    --secundary-color: #f9fdff;
+    --contrast-color: aliceblue;
+    --very-like-pink: rgb(214, 236, 255);
+}
+
+.nav-bar-opt {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-bar-opt ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 8vh;
+    overflow: hidden;
+}
+
+.nav-bar-opt li {
+    float: left;
+}
+
+.nav-bar-opt li a {
+    display: block;
+    color: var(--primary-color);
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: .4s all;
+    margin-bottom: 0.5px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+.nav-bar-opt li a:hover {
+    transition: .4s all;
+    font-size: 16.5px;
+    margin-bottom: -0.5px;
+}

@@ -1,0 +1,12 @@
+.principal-contain .searching {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.principal-contain .searching div {
+    width: 60%;
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
+    margin-left: auto;
+    margin-right: auto;
+}

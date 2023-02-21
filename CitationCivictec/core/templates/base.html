@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+
+  <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" />
+
+  <title>citations | civictec</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/consumers-v2.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/tables-v2.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav-bar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/officer-v1.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/modal.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/citations.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/signup-v1.css' %}">
+
+  {% block bootstrap %} {% endblock %}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  {% block content %}{% endblock %}
+
+  <!-- JS -->
+  <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>
